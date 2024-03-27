@@ -100,7 +100,7 @@ const GPUModal = ({gpu}: {gpu: GPU}) => {
             {(onClose) => (
                 <>
                   <ModalHeader>
-                    CPU
+                    GPU
                   </ModalHeader>
                   <ModalBody>
                     <GpuTable gpus={[gpu]}/>

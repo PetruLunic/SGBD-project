@@ -2,12 +2,17 @@ import PCModel from "@/app/_lib/models/PC";
 import dbConnect from "@/app/_lib/utils/dbConnect";
 import PcTable from "@/app/(PCGroup)/pc/PCTable";
 import {PC} from "@/app/types";
+import {ParsedUrlQuery} from "querystring";
+import {transformSearchParams} from "@/app/_lib/utils/transformSearchParams";
 
-
-export default async function Page() {
+interface Props {
+ searchParams: ParsedUrlQuery;
+}
+export default async function Page({searchParams}: Props) {
+ const query = transformSearchParams(searchParams);
  await dbConnect();
 
- const pcs: PC[] = await PCModel.find().populate("storage cpu gpu ram motherboard").lean();
+ const pcs: PC[] = await PCModel.find(query).populate("storage cpu gpu ram motherboard").lean();
 
  return (
   <div>

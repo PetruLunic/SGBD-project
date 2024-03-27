@@ -56,7 +56,6 @@ const columns = [
 ]
 
 const renderCell = (item: any) => {
-  console.log(typeof item)
   if (typeof item === "object") {
     return (
         <Table isCompact removeWrapper>
@@ -82,17 +81,17 @@ const renderCell = (item: any) => {
 export default function CpuTable({cpus}: Props) {
 
  return (
-     <Table aria-label="CPUs" isStriped>
-       <TableHeader columns={columns}>
-         {(column) => <TableColumn key={column.key}>{column.name}</TableColumn>}
-       </TableHeader>
-       <TableBody items={cpus}>
-         {(item) => (
-             <TableRow key={item._id}>
-               {(columnKey) => <TableCell>{renderCell(getKeyValue(item, columnKey))}</TableCell>}
-             </TableRow>
-         )}
-       </TableBody>
-     </Table>
+   <Table aria-label="CPUs" isStriped>
+     <TableHeader columns={columns}>
+       {(column) => <TableColumn key={column.key}>{column.name}</TableColumn>}
+     </TableHeader>
+     <TableBody emptyContent={"No CPUs to display."} items={cpus}>
+       {(item) => (
+         <TableRow key={item._id}>
+           {(columnKey) => <TableCell>{renderCell(getKeyValue(item, columnKey))}</TableCell>}
+         </TableRow>
+       )}
+     </TableBody>
+   </Table>
  );
 };

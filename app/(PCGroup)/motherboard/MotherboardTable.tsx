@@ -16,7 +16,7 @@ export default function MotherboardTable({motherboards}: Props) {
        <TableHeader columns={columns}>
          {(column) => <TableColumn key={column.name}>{column.name}</TableColumn>}
        </TableHeader>
-       <TableBody items={motherboards}>
+       <TableBody items={motherboards} emptyContent="No motherboard found">
          {(item) => (
              <TableRow key={item._id}>
                {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}

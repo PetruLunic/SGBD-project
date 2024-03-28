@@ -41,7 +41,7 @@ export default function RamTable({rams}: Props) {
        <TableHeader columns={columns}>
          {(column) => <TableColumn key={column.key}>{column.name}</TableColumn>}
        </TableHeader>
-       <TableBody items={rams}>
+       <TableBody items={rams} emptyContent="No RAM found">
          {(item) => (
              <TableRow key={item._id}>
                {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}

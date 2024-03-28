@@ -45,7 +45,7 @@ export default function GpuTable({gpus}: Props) {
      <TableHeader columns={columns}>
        {(column) => <TableColumn key={column.key}>{column.name}</TableColumn>}
      </TableHeader>
-     <TableBody items={gpus}>
+     <TableBody items={gpus} emptyContent="No GPU found">
        {(item) => (
            <TableRow key={item._id}>
              {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
